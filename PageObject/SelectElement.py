@@ -1,15 +1,12 @@
 from selenium.webdriver.support.ui import WebDriverWait
 
-
-class BasePageElement(object):
-    """Base page class that is initialized on every page object class."""
+class BasePageSelectElement(object):
 
     def __set__(self, obj, value):
-        """Sets the text to the value supplied"""
         driver = obj.driver
         WebDriverWait(driver, 100).until(
-            lambda driver: driver.find_element_by_name(self.locator))
-        driver.find_element_by_name(self.locator).send_keys(value)
+            lambda driver: driver.find_element_by_class_name("goog-inline-block goog-flat-menu-button jfk-select"))
+        driver.find_element_by_class_name("goog-inline-block goog-flat-menu-button jfk-select").click()
 
     def __get__(self, obj, owner):
         """Gets the text of the specified object"""
