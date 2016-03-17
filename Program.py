@@ -1,4 +1,5 @@
 import unittest
+import uuid
 
 from selenium import webdriver
 
@@ -11,8 +12,9 @@ class SendEmail(unittest.TestCase):
         # self.driver.find_element_by_css_selector()
 
     def test_search_in_python_org(self):
+            emailAddress = str(uuid.uuid1()).replace("-", "")
             registration_page = RegistrationPage.RegistrationPage(self.driver)
-            registration_page.registrate_account("framebassman12", "framebassman12@gmail.com", "112312313123123")
+            registration_page.registrate_account("UserName", emailAddress, "Debarcader12")
 
     def tearDown(self):
         self.driver.close()
