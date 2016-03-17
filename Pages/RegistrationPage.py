@@ -69,8 +69,8 @@ class RegistrationPage(BasePage):
         self.birth_year_element = "1990"
 
         self.gender_element = "f"
-        self.skip_captcha_element = "1"
-        self.terms_of_service_element = "1"
+        self.skip_captcha_element = True
+        self.terms_of_service_element = True
 
         element = self.driver.find_element(*RegistrationPageLocators.SUBMIT)
         element.click()
