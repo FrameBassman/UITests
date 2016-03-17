@@ -1,7 +1,8 @@
-from PageObject.Element import BasePageElement
+from PageObject.TextboxControl import BasePageElement
 from PageObject.Locators import RegistrationPageLocators
 from PageObject.Page import BasePage
-from PageObject.SelectElement import BasePageSelectElement
+from PageObject.ListboxControl import BasePageSelectElement
+from PageObject.CheckboxControl import CheckboxControl
 
 
 #region Locators.
@@ -18,15 +19,19 @@ class PasswordAgainElement(BasePageElement):
     locator = 'PasswdAgain'
 class BirthDayElement(BasePageElement):
     locator = 'BirthDay'
+
 class BirthMonthElement(BasePageSelectElement):
-    locator = 'BirthMonth'
+    controlLocator = '//*[@id="BirthMonth"]/div'
+
 class BirthYearElement(BasePageElement):
     locator = 'BirthYear'
-class GenderElement(BasePageElement):
-    locator = 'Gender'
-class SkipCaptchaElement(BasePageElement):
+
+class GenderElement(BasePageSelectElement):
+    controlLocator = './/*[@id="Gender"]/div[1]'
+
+class SkipCaptchaElement(CheckboxControl):
     locator = 'SkipCaptcha'
-class TermsOfServiceElement(BasePageElement):
+class TermsOfServiceElement(CheckboxControl):
     locator = 'TermsOfService'
 
 #endregion
@@ -60,8 +65,12 @@ class RegistrationPage(BasePage):
         self.password_again_element = password
 
         self.birth_day_element = "1"
-        self.birth_month_element = "May"
+        self.birth_month_element = "1"
         self.birth_year_element = "1990"
+
+        self.gender_element = "f"
+        self.skip_captcha_element = "1"
+        self.terms_of_service_element = "1"
 
         element = self.driver.find_element(*RegistrationPageLocators.SUBMIT)
         element.click()

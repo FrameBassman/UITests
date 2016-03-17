@@ -8,6 +8,7 @@ from Pages import RegistrationPage
 class SendEmail(unittest.TestCase):
     def setUp(self):
         self.driver = webdriver.Chrome()
+        # self.driver.find_element_by_css_selector()
 
     def test_search_in_python_org(self):
             registration_page = RegistrationPage.RegistrationPage(self.driver)
