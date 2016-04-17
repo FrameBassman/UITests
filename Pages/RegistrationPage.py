@@ -72,5 +72,5 @@ class RegistrationPage(BasePage):
         self.skip_captcha_element = True
         self.terms_of_service_element = True
 
-        element = self.driver.find_element(*RegistrationPageLocators.SUBMIT)
+        element = self.driver.find_element(RegistrationPageLocators.SUBMIT)
         element.click()

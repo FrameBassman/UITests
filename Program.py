@@ -1,20 +1,25 @@
 import unittest
-import uuid
 
 from selenium import webdriver
 
-from Pages import RegistrationPage
+from Pages import LoginPage
+from Pages import InboxPage
 
 
 class SendEmail(unittest.TestCase):
     def setUp(self):
         self.driver = webdriver.Chrome()
-        # self.driver.find_element_by_css_selector()
 
     def test_search_in_python_org(self):
-            emailAddress = str(uuid.uuid1()).replace("-", "")
-            registration_page = RegistrationPage.RegistrationPage(self.driver)
-            registration_page.registrate_account("UserName", emailAddress, "Debarcader12")
+
+            loginPage = LoginPage.LoginPage(self.driver)
+            inboxPage = InboxPage.InboxPage(self.driver)
+
+            loginPage.login('', '')
+            inboxPage.sendEmail('framebassman@gmail.com')
+            inboxPage.logout()
+            loginPage.login('', '', True)
+            inboxPage.verifyEmail(" - Test body", "Test")
 
     def tearDown(self):
         self.driver.close()
