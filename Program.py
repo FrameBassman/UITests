@@ -15,11 +15,11 @@ class SendEmail(unittest.TestCase):
             loginPage = LoginPage.LoginPage(self.driver)
             inboxPage = InboxPage.InboxPage(self.driver)
 
-            loginPage.login('', '')
-            inboxPage.sendEmail('framebassman@gmail.com')
+            loginPage.login('framebassman12', 'Tsunami9')
+            inboxPage.sendEmail('framebassman123@gmail.com', 'Test', 'Test body')
             inboxPage.logout()
-            loginPage.login('', '', True)
-            inboxPage.verifyEmail(" - Test body", "Test")
+            loginPage.login('framebassman123', 'Tsunami10', True)
+            inboxPage.verifyEmail('Test', 'Test body')
 
     def tearDown(self):
         self.driver.close()

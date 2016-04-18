@@ -24,3 +24,6 @@ class LogoutLocators(object):
 class EmailLocators(object):
     SUBJ = (By.XPATH, "/html/body/div[7]/div[3]/div/div[2]/div[1]/div[2]/div/div/div/div[2]/div[1]/div[1]/div/div/div[7]/div/div[1]/div[2]/div[1]/table/tbody/tr[1]/td[6]/div/div/div/span[1]")
     BODY = (By.XPATH, "/html/body/div[7]/div[3]/div/div[2]/div[1]/div[2]/div/div/div/div[2]/div[1]/div[1]/div/div/div[7]/div/div[1]/div[2]/div[1]/table/tbody/tr[1]/td[6]/div/div/div/span[2]")
+
+class ConfirmationMessage(object):
+    Message = (By.CSS_SELECTOR, "#link_vsm")

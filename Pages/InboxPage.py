@@ -4,6 +4,8 @@ from PageObject.ButtonControl import ButtonControl
 from PageObject.EmailFieldControl import EmailFieldControl
 from PageObject.Locators import LogoutLocators
 from PageObject.Locators import EmailLocators
+from PageObject.Locators import ConfirmationMessage
+from selenium.webdriver.support.ui import WebDriverWait
 
 class ComposeMailElement(ButtonControl):
     locator = '/html/body/div[7]/div[3]/div/div[2]/div[1]/div[1]/div[1]/div[2]/div/div/div[1]/div/div'
@@ -35,16 +37,20 @@ class InboxPage(BasePage):
     bodyElement = BodyElement()
     sendElement = SendElement()
 
+    confirmationMessage = ConfirmationMessage()
+
     emailSubj = EmailSubj()
     emailRow = EmailRow()
 
-    def sendEmail(self, reciverEmail):
+    def sendEmail(self, reciverEmail, subject, body):
         self.driver.get(self.url)
         self.composeMailElement.click(self)
         self.toElement = reciverEmail
-        self.subjectElement = 'Test'
-        self.bodyElement = 'Test body'
+        self.subjectElement = subject
+        self.bodyElement = body
         self.sendElement.click(self)
+        WebDriverWait(self.driver, 100).until(
+            lambda driver: driver.find_element(*ConfirmationMessage.Message))
 
     def logout(self):
         element = self.driver.find_element(*LogoutLocators.FLYOUTMENU)
@@ -56,10 +62,12 @@ class InboxPage(BasePage):
         element = self.driver.find_element(*LogoutLocators.ADDACCOUNT)
         element.click()
 
-    def verifyEmail(self, body, subject):
+    def verifyEmail(self, subject, body):
         # self.emailRow.click(self)
         sourceSubject = self.driver.find_element(*EmailLocators.SUBJ).text
         sourceBody = self.driver.find_element(*EmailLocators.BODY).text
+
+        body = " - " + body
 
         assert sourceSubject.lower() == subject.lower(), 'SourceSubject is not match'
         assert sourceBody.lower() == body.lower(), 'SourceBody is not match'
