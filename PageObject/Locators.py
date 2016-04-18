@@ -1,11 +1,9 @@
 from selenium.webdriver.common.by import By
 
 class InboxPageLocators(object):
-
     SEND_BUTTON = (By.ID, ':o4')
 
 class LoginPageLocators(object):
-
     NEXT = (By.ID, 'next')
     SIGNIN = (By.ID, 'signIn')
 
@@ -18,6 +16,8 @@ class LogoutLocators(object):
 class EmailLocators(object):
     SUBJ = (By.XPATH, "/html/body/div[7]/div[3]/div/div[2]/div[1]/div[2]/div/div/div/div[2]/div[1]/div[1]/div/div/div[7]/div/div[1]/div[2]/div[1]/table/tbody/tr[1]/td[6]/div/div/div/span[1]")
     BODY = (By.XPATH, "/html/body/div[7]/div[3]/div/div[2]/div[1]/div[2]/div/div/div/div[2]/div[1]/div[1]/div/div/div[7]/div/div[1]/div[2]/div[1]/table/tbody/tr[1]/td[6]/div/div/div/span[2]")
+    SelectAllButton = (By.XPATH, '//*[@id=":3g"]/div[1]/span/div')
+    DeleteButton = (By.XPATH, '//*[@id=":5"]/div/div[1]/div[1]/div/div/div[2]/div[3]/div/div')
 
 class ConfirmationMessage(object):
     Message = (By.CSS_SELECTOR, "#link_vsm")

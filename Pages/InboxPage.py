@@ -1,4 +1,4 @@
-from PageObject.TextboxControl import BasePageElement
+from PageObject.BasePageElement import BasePageElement
 from PageObject.Page import BasePage
 from PageObject.ButtonControl import ButtonControl
 from PageObject.EmailFieldControl import EmailFieldControl
@@ -63,7 +63,6 @@ class InboxPage(BasePage):
         element.click()
 
     def verifyEmail(self, subject, body):
-        # self.emailRow.click(self)
         sourceSubject = self.driver.find_element(*EmailLocators.SUBJ).text
         sourceBody = self.driver.find_element(*EmailLocators.BODY).text
 
@@ -71,3 +70,9 @@ class InboxPage(BasePage):
 
         assert sourceSubject.lower() == subject.lower(), 'SourceSubject is not match'
         assert sourceBody.lower() == body.lower(), 'SourceBody is not match'
+
+    def removeAllEmails(self):
+        element = self.driver.find_element(*EmailLocators.SelectAllButton)
+        element.click()
+        element = self.driver.find_element(*EmailLocators.DeleteButton)
+        element.click()
