@@ -1,11 +1,13 @@
-from PageObject.BasePageElement import BasePageElement
-from PageObject.Page import BasePage
-from PageObject.ButtonControl import ButtonControl
-from PageObject.EmailFieldControl import EmailFieldControl
-from PageObject.Locators import LogoutLocators
-from PageObject.Locators import EmailLocators
-from PageObject.Locators import ConfirmationMessage
 from selenium.webdriver.support.ui import WebDriverWait
+
+from PageObject.Controls.BasePageElement import BasePageElement
+from PageObject.Controls.ButtonControl import ButtonControl
+from PageObject.Controls.EmailFieldControl import EmailFieldControl
+from PageObject.Locators import ConfirmationMessage
+from PageObject.Locators import EmailLocators
+from PageObject.Locators import LogoutLocators
+from PageObject.Page import BasePage
+
 
 class ComposeMailElement(ButtonControl):
     locator = '/html/body/div[7]/div[3]/div/div[2]/div[1]/div[1]/div[1]/div[2]/div/div/div[1]/div/div'

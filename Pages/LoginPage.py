@@ -1,4 +1,4 @@
-from PageObject.BasePageElement import BasePageElement
+from PageObject.Controls.BasePageElement import BasePageElement
 from PageObject.Locators import LoginPageLocators
 from PageObject.Page import BasePage
 
